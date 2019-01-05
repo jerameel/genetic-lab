@@ -1,5 +1,7 @@
 # Genetic Lab
 
+[![npm version](https://badge.fury.io/js/genetic-lab.svg)](https://badge.fury.io/js/genetic-lab)
+
 A simple genetic algorithm library.
 
 ## Getting Started
@@ -97,12 +99,23 @@ selection(population); // => ['111'] or ['101']
 
 ## Mutation
 
-### mutateBinary(individual)
+### mutateOrder(individual)
 
-Mutates one random bit of a string binary.
+Swaps two genes randomly.
 
 ```js
-mutateBinary('000000'); // => '000100'
+mutateOrder('ABC'); // => 'BAC' or 'CBA' or 'BCA'
+mutateOrder('10'); // => '01'
+```
+
+### createMutation(sample)
+
+Creates a mutation function that randomly changes a gene based on **sample**.
+
+```js
+const sample = ['1', '0'];
+const mutateBinary = createMutation(sample);
+mutateBinary('10'); // => '11' or '00'
 ```
 
 ## License
