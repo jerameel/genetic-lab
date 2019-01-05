@@ -4,7 +4,9 @@
   "description": "A simple genetic algorithm library.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint ./ --cache --ignore-pattern .gitignore",
+    "precommit-msg": "echo 'Running checks... Please wait...' && exit 0"
   },
   "author": "Jerameel Delos Reyes",
   "license": "MIT",
@@ -12,12 +14,18 @@
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
-    "jest": "^23.6.0"
+    "jest": "^23.6.0",
+    "pre-commit": "^1.2.2"
   },
   "jest": {
     "verbose": true
   },
   "repository": "github:jerameel/genetic-lab",
+  "pre-commit": [
+    "precommit-msg",
+    "lint",
+    "test"
+  ],
   "keywords": [
     "genetic",
     "algorithm",
