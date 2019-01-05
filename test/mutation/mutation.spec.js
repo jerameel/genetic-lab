@@ -1,18 +1,33 @@
-const Mutation = require('../../lib/mutation/mutation');
+const Mutation = require('../../lib/mutation');
 
-const { mutateBinary } = Mutation;
+const { mutateOrder, createMutation } = Mutation;
 
-describe('mutateBinary', () => {
-  test('input length', () => {
-    const input = '000000';
-    const actual = mutateBinary(input).length;
-    const expected = input.length;
-    expect(actual).toBe(expected);
+describe('mutateOrder', () => {
+  test('normal input [type 1]', () => {
+    const input = 'ABC';
+    const expected = input;
+    const actual = mutateOrder(input);
+    expect(actual.length).toBe(expected.length);
+    expect(actual).not.toBe(expected);
+  });
+});
+
+describe('createMutation', () => {
+  test('normal input [type 1]', () => {
+    const mutate = createMutation(['0', '1']);
+    const input = '100000';
+    const expected = input;
+    const actual = mutate(input);
+    expect(actual.length).toBe(expected.length);
+    expect(actual).not.toBe(expected);
   });
 
-  test('input mutation', () => {
-    const input = '000000';
-    const actual = mutateBinary(input);
-    expect(actual).not.toBe(input);
+  test('normal input [type 2]', () => {
+    const mutate = createMutation(['A', 'B', 'C']);
+    const input = 'ABC';
+    const expected = input;
+    const actual = mutate(input);
+    expect(actual.length).toBe(expected.length);
+    expect(actual).not.toBe(expected);
   });
 });
