@@ -17,5 +17,11 @@
   "jest": {
     "verbose": true
   },
-  "repository": "github:jerameel/genetic-lab"
+  "repository": "github:jerameel/genetic-lab",
+  "keywords": [
+    "genetic",
+    "algorithm",
+    "genetic-algorithm",
+    "lab"
+  ]
 }
