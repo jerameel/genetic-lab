@@ -28,7 +28,11 @@ const GeneticLab = require('genetic-lab');
 // using ES6 import
 // import GeneticLab from 'genetic-lab';
 
-const { Selection, Mutation } = GeneticLab;
+const {
+  Selection,
+  Mutation,
+  Crossover,
+  } = GeneticLab;
 
 const {
   createRoulleteWheelSelection,
@@ -36,6 +40,11 @@ const {
   createRankSelection,
   createTournamentSelection,
 } = Selection;
+
+const {
+  pointCrossover,
+  uniquePointCrossover,
+} = Crossover;
 
 const { mutateBinary } = Mutation;
 ```
@@ -116,6 +125,27 @@ Creates a mutation function that randomly changes a gene based on **sample**.
 const sample = ['1', '0'];
 const mutateBinary = createMutation(sample);
 mutateBinary('10'); // => '11' or '00'
+```
+
+## Crossover
+
+### pointCrossover(parentA, parentB, index)
+
+Creates two offspring based on *parentA* and *parentB* using *index* as point of crossover. If no index is provided, it would be assigned randomly.
+
+```js
+const pair = ['ABCD', 'DCBA'];
+pointCrossover(...pair, 2); // => ['ABBA', 'DCCD']
+```
+
+### uniquePointCrossover(parentA, parentB, index)
+
+Creates two unique chromosome offsprings based on unique chromosomes of *parentA* and *parentB* using *index* as point of crossover. If no index is provided, it would be assigned randomly.
+
+
+```js
+const pair = ['ABCD', 'DCBA'];
+uniquePointCrossover(...pair, 2); // => ['ABDC', 'DCAB']
 ```
 
 ## License
