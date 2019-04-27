@@ -1,4 +1,4 @@
-const Mutation = require('../../lib/mutation');
+const Mutation = require('../../lib/mutation/mutation');
 
 const { mutateOrder, createMutation } = Mutation;
 
