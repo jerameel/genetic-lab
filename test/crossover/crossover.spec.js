@@ -1,4 +1,4 @@
-const Crossover = require('../../lib/crossover');
+const Crossover = require('../../lib/crossover/crossover');
 
 const { pointCrossover, uniquePointCrossover } = Crossover;
 
