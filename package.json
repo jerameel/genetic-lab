@@ -1,6 +1,6 @@
 {
   "name": "genetic-lab",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A simple genetic algorithm library.",
   "main": "lib/index.js",
   "scripts": {
@@ -30,6 +30,8 @@
     "genetic",
     "algorithm",
     "genetic-algorithm",
-    "lab"
+    "evolutionary",
+    "lab",
+    "simple"
   ]
 }

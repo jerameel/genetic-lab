@@ -46,7 +46,10 @@ const {
   uniquePointCrossover,
 } = Crossover;
 
-const { mutateBinary } = Mutation;
+const {
+  mutateOrder,
+  createMutation,
+  } = Mutation;
 ```
 
 ## Fitness
