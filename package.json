@@ -1,37 +1,42 @@
 {
   "name": "genetic-lab",
-  "version": "0.0.7",
-  "description": "A simple genetic algorithm library.",
+  "version": "0.0.8",
+  "description": "A lightweight genetic algorithm library.",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
+    "build": "tsc",
     "test": "jest",
-    "lint": "eslint ./ --cache --ignore-pattern .gitignore",
-    "precommit-msg": "echo 'Running checks... Please wait...' && exit 0"
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "preversion": "npm test && npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
+  "files": [
+    "lib/**/*"
+  ],
   "author": "Jerameel Delos Reyes",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^5.9.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0",
     "jest": "^23.6.0",
-    "pre-commit": "^1.2.2"
+    "prettier": "^1.19.1",
+    "tslint": "^5.20.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.7.2"
   },
   "jest": {
     "verbose": true
   },
   "repository": "github:jerameel/genetic-lab",
-  "pre-commit": [
-    "precommit-msg",
-    "lint",
-    "test"
-  ],
   "keywords": [
     "genetic",
     "algorithm",
     "genetic-algorithm",
     "evolutionary",
     "lab",
-    "simple"
+    "simple",
+    "light"
   ]
 }
