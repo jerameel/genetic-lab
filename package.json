@@ -1,6 +1,6 @@
 {
   "name": "genetic-lab",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A lightweight genetic algorithm library.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
