@@ -2,12 +2,11 @@
 
 [![npm version](https://badge.fury.io/js/genetic-lab.svg)](https://badge.fury.io/js/genetic-lab)
 
-A simple genetic algorithm library.
+A lightweight genetic algorithm library.
 
-### Changelog [0.0.7]
+### Changelog [0.0.8]
 
-- Added examples
-- _createRankSelection_ is now weighted based on rank
+- Added *Typescript* support
 
 For a more detailed list of updates, see [CHANGELOG](CHANGELOG.md).
 
