@@ -2,6 +2,8 @@
 
 [![npm version](https://badge.fury.io/js/genetic-lab.svg)](https://badge.fury.io/js/genetic-lab)
 
+![](https://github.com/jerameel/genetic-lab/workflows/npm%20Pipeline/badge.svg)
+
 A lightweight genetic algorithm library.
 
 ### Changelog [0.0.8]
