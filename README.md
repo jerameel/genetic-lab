@@ -6,7 +6,7 @@
 
 A lightweight genetic algorithm library.
 
-### Changelog [0.0.8]
+### Changelog [0.1.1]
 
 - Added *Typescript* support
 
