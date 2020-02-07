@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## February 2020
+## 1.0.0
+- Update documentation
+
 ## October 2019
 ## 0.1.1 (0.0.8)
 #### Added

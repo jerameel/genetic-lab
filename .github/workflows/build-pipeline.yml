@@ -1,4 +1,4 @@
-name: npm Pipeline
+name: build pipeline
 
 on:
   release:

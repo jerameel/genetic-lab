@@ -2,11 +2,13 @@
 
 [![npm version](https://badge.fury.io/js/genetic-lab.svg)](https://badge.fury.io/js/genetic-lab)
 
-![](https://github.com/jerameel/genetic-lab/workflows/npm%20Pipeline/badge.svg)
+![](https://github.com/jerameel/genetic-lab/workflows/build%20pipeline/badge.svg)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A lightweight genetic algorithm library.
 
-### Changelog [0.1.1]
+### Changelog [1.0.0]
 
 - Added *Typescript* support
 
