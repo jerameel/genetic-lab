@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const Selection = require('../../lib/selection/selection');
 
 const {
@@ -60,7 +61,9 @@ describe('createRoulleteWheelSelection', () => {
 describe('createStochasticUniversalSampling', () => {
   test('count exceed input', () => {
     const input = ['000000', '000000'];
-    const actual = createStochasticUniversalSampling(getFitness, input.length + 1)(input);
+    const actual = createStochasticUniversalSampling(getFitness, {
+      count: input.length + 1,
+    })(input);
     const expected = input;
     expect(actual).toEqual(expected);
   });
@@ -68,7 +71,9 @@ describe('createStochasticUniversalSampling', () => {
   test('normal input', () => {
     const input = ['000010', '000011', '011010', '110111'];
     const count = 3;
-    const actual = createStochasticUniversalSampling(getFitness, count)(input).length;
+    const actual = createStochasticUniversalSampling(getFitness, { count })(
+      input,
+    ).length;
     const expected = count;
     expect(actual).toBe(expected);
   });
@@ -77,14 +82,16 @@ describe('createStochasticUniversalSampling', () => {
 describe('createRankSelection', () => {
   test('empty input', () => {
     const input = [];
-    const actual = createRankSelection(getFitness, 2)(input).length;
+    const actual = createRankSelection(getFitness, { count: 2 })(input).length;
     const expected = 0;
     expect(actual).toBe(expected);
   });
 
   test('count exceed input', () => {
     const input = ['000000', '000000'];
-    const actual = createRankSelection(getFitness, input.length + 1)(input);
+    const actual = createRankSelection(getFitness, { count: input.length + 1 })(
+      input,
+    );
     const expected = input;
     expect(actual).toEqual(expected);
   });
@@ -92,7 +99,7 @@ describe('createRankSelection', () => {
   test('normal input', () => {
     const input = ['000010', '000011', '011010', '110111'];
     const count = 3;
-    const actual = createRankSelection(getFitness, count)(input).length;
+    const actual = createRankSelection(getFitness, { count })(input).length;
     const expected = count;
     expect(actual).toBe(expected);
   });
@@ -108,7 +115,10 @@ describe('createTournamentSelection', () => {
 
   test('tournament size exceed input', () => {
     const input = ['000000', '000000'];
-    const actual = createTournamentSelection(getFitness, input.length + 1)(input)[0];
+    const actual = createTournamentSelection(
+      getFitness,
+      input.length + 1,
+    )(input)[0];
     const expected = input[0];
     expect(actual).toEqual(expected);
   });

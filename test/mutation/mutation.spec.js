@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const Mutation = require('../../lib/mutation/mutation');
 
 const { mutateOrder, createMutation } = Mutation;

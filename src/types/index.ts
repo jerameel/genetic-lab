@@ -1,4 +1,4 @@
-export { Population } from './population';
-export { Characteristic } from './characteristic';
-export { Individual } from './individual';
-export { FitnessFunction } from './fitness';
+export { Population } from './Population';
+export { Characteristic } from './Characteristic';
+export { Individual } from './Individual';
+export { FitnessFunction } from './Fitness';

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const Crossover = require('../../lib/crossover/crossover');
 
 const { pointCrossover, uniquePointCrossover } = Crossover;

@@ -3,6 +3,9 @@ import { FitnessFunction, Individual, Population } from '../types';
 export function weightedSelection(
   population: Population,
   getFitness: (individual: Individual, index?: number) => number,
+  config?: {
+    randomizer?: () => number;
+  },
 ) {
   const populationFitness = population.map(getFitness);
   const totalFitness = populationFitness.reduce((sum, x) => sum + x, 0);
@@ -14,7 +17,7 @@ export function weightedSelection(
     return fitness / (totalFitness === 0 ? 1 : totalFitness);
   });
 
-  const randomNumber = Math.random();
+  const randomNumber = (config?.randomizer || Math.random)();
   let s = 0;
 
   const targetIndex = population.findIndex((v, i) => {
@@ -29,7 +32,10 @@ export function weightedSelection(
 
 export function createStochasticUniversalSampling(
   getFitness: FitnessFunction,
-  count: number,
+  config: {
+    count: number;
+    randomizer?: () => number;
+  },
 ) {
   return (population: Population) => {
     if (population.length === 1) {
@@ -40,8 +46,10 @@ export function createStochasticUniversalSampling(
 
     const populationClone = population.slice();
 
-    while (result.length < count && populationClone.length > 0) {
-      const individual = weightedSelection(populationClone, getFitness);
+    while (result.length < config.count && populationClone.length > 0) {
+      const individual = weightedSelection(populationClone, getFitness, {
+        randomizer: config.randomizer,
+      });
       result.push(individual);
       populationClone.splice(populationClone.indexOf(individual), 1);
     }
@@ -50,13 +58,24 @@ export function createStochasticUniversalSampling(
   };
 }
 
-export function createRoulleteWheelSelection(getFitness: FitnessFunction) {
-  return createStochasticUniversalSampling(getFitness, 1);
+export function createRoulleteWheelSelection(
+  getFitness: FitnessFunction,
+  config?: {
+    randomizer?: () => number;
+  },
+) {
+  return createStochasticUniversalSampling(getFitness, {
+    ...config,
+    count: 1,
+  });
 }
 
 export function createTournamentSelection(
   getFitness: FitnessFunction,
   tournamentSize: number,
+  config?: {
+    randomizer?: () => number;
+  },
 ) {
   return (population: Population) => {
     const selection = createRoulleteWheelSelection(getFitness);
@@ -67,7 +86,9 @@ export function createTournamentSelection(
       tournamentPopulation.length < tournamentSize &&
       tournamentPopulation.length < populationClone.length
     ) {
-      const i = Math.floor(Math.random() * populationClone.length);
+      const i = Math.floor(
+        (config?.randomizer || Math.random)() * populationClone.length,
+      );
       tournamentPopulation.push(populationClone[i]);
       populationClone.splice(i, 1);
     }
@@ -78,7 +99,10 @@ export function createTournamentSelection(
 
 export function createRankSelection(
   getFitness: FitnessFunction,
-  count: number,
+  config: {
+    count: number;
+    randomizer?: () => number;
+  },
 ) {
   return (population: Population) => {
     if (population.length === 1) {
@@ -90,10 +114,11 @@ export function createRankSelection(
     const ranking = population
       .slice()
       .sort((a, b) => getFitness(b) - getFitness(a));
-    while (result.length < count && ranking.length > 0) {
+    while (result.length < config.count && ranking.length > 0) {
       const individual = weightedSelection(
         ranking,
-        (value: string, index: number = 0) => ranking.length - index,
+        (value: string, index = 0) => ranking.length - index,
+        { randomizer: config.randomizer },
       );
       result.push(individual);
       ranking.splice(ranking.indexOf(individual), 1);

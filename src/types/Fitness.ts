@@ -1,3 +1,3 @@
-import { Individual } from './individual';
+import { Individual } from './Individual';
 
 export type FitnessFunction = (individual: Individual) => number;

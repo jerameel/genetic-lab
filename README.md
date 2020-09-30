@@ -71,7 +71,7 @@ getFitness("010111"); // => 23
 
 ## Selection
 
-### createRoulleteWheelSelection(getFitness)
+### createRoulleteWheelSelection(getFitness, config?)
 
 Creates a selection function that uses _Roullete Wheel_ method.
 
@@ -81,27 +81,38 @@ const selection = createRoulleteWheelSelection(getFitness);
 selection(population); // => ['111']
 ```
 
-### createStochasticUniversalSampling(getFitness, count)
+#### Config (Optional)
+ - randomizer?: `() => number`; // function that replaces `Math.random()`
+
+### createStochasticUniversalSampling(getFitness, config)
 
 Creates a selection function that uses _Stochastic Universal Sampling_ method. Number of individuals selected is based on **count**.
 
 ```js
 const population = ["000", "111", "101"];
-const selection = createStochasticUniversalSampling(getFitness, 2);
+const selection = createStochasticUniversalSampling(getFitness, { count: 2 });
 selection(population); // => ['111', '101'] or ['101', '111']
 ```
 
-### createRankSelection(getFitness, count)
+#### Config
+ - randomizer?: `() => number`; // function that replaces `Math.random()`
+ - count: `number`;
+
+### createRankSelection(getFitness, config)
 
 Creates a selection function that uses _Rank Selection_ method. Number of individuals selected is based on **count**.
 
 ```js
 const population = ["000", "111", "101"];
-const selection = createRankSelection(getFitness, 2);
+const selection = createRankSelection(getFitness, { count: 2 });
 selection(population); // => ['111', '101']
 ```
 
-### createTournamentSelection(getFitness, tournamentSize)
+#### Config
+ - randomizer?: `() => number`; // function that replaces `Math.random()`
+ - count: `number`;
+
+### createTournamentSelection(getFitness, tournamentSize, config?)
 
 Creates a selection function that uses _Tournament Selection_ method. Size of tournament is dependent on **tournametSize**.
 
@@ -110,6 +121,10 @@ const population = ["000", "111", "101"];
 const selection = createTournamentSelection(getFitness, 2);
 selection(population); // => ['111'] or ['101']
 ```
+
+#### Config (Optional)
+ - randomizer?: `() => number`; // function that replaces `Math.random()`
+
 
 ## Mutation
 
