@@ -8,9 +8,9 @@
 
 A lightweight genetic algorithm library.
 
-### Changelog [1.0.0]
+### Changelog [1.0.1]
 
-- Added *Typescript* support
+- Added support for custom configuration, ex. custom randomizer function
 
 For a more detailed list of updates, see [CHANGELOG](CHANGELOG.md).
 

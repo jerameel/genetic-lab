@@ -28,16 +28,18 @@ function crossover(parents) {
 }
 
 const population = [20, 10, 1, -1, -10, -20];
-const selection = createStochasticUniversalSampling(getFitness, 2);
+const selection = createStochasticUniversalSampling(getFitness, { count: 2 });
 let parents = selection(population);
 let newPopulation = crossover(parents);
 let generation = 0;
 
 console.log(`Generation ${generation}: ${newPopulation}`);
 
-while (generation < 1000) {
+while (generation < 1000 && getFitness(newPopulation[0]) !== 10 ** 1000) {
   parents = selection(newPopulation);
   newPopulation = crossover(parents);
   generation += 1;
   console.log(`Generation ${generation}: ${newPopulation}`);
 }
+
+console.log(`Result: ${newPopulation[0]}`);

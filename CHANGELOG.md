@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## September 2020
+## 1.0.1
+- Added support for custom configuration, ex. custom randomizer function
+
 ## February 2020
 ## 1.0.0
 - Update documentation
